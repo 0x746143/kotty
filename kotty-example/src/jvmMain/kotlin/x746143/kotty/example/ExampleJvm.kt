@@ -13,8 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package x746143.kotty
+package x746143.kotty.example
+
+import x746143.kotty.startKotty
 
 fun main() {
-    println("Kotty")
+    val kotty = startKotty {
+        port = 8080
+    }
+    kotty.stop()
 }

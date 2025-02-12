@@ -13,27 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-dependencyResolutionManagement {
-    @Suppress("UnstableApiUsage")
-    repositories {
-        mavenCentral()
+kotlin {
+    sourceSets {
+        jvmMain {
+            dependencies {
+                implementation(project(":kotty-core"))
+            }
+        }
+        linuxX64Main {
+            dependencies {
+                implementation(project(":kotty-core"))
+            }
+        }
     }
 }
-
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
-}
-
-rootProject.name = "kotty"
-
-gradle.beforeProject {
-    group = "x746143"
-    version = "0.1.0-SNAPSHOT"
-    subprojects {
-        apply(plugin = "buildsrc.convention.kmp")
-    }
-}
-
-include("kotty-core")
-include("kotty-example")
-include("kotty-epoll")
