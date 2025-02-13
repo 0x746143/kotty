@@ -1,17 +1,23 @@
 [versions]
-kotlin = "2.1.0"
-kotlinxDatetime = "0.6.1"
-kotlinxSerializationJSON = "1.7.2"
-kotlinxCoroutines = "1.8.1"
+kotlin = "2.1.10"
+java = "21"
+kotlinxDatetime = "0.6.2"
+kotlinxSerializationJSON = "1.8.0"
+kotlinxCoroutines = "1.10.1"
+kotlinxAtomicfu = "0.27.0"
+nettyVersion = "4.2.0.RC2"
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinxAtomicfu =  { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "kotlinxAtomicfu" }
+
+netty = { module = "io.netty:netty-all", version.ref = "nettyVersion" }
 
 [bundles]
-kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
+kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines", "kotlinxAtomicfu"]
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

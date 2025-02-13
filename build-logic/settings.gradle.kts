@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("kotty-kmp")
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
 
-kotlin {
-    sourceSets {
-        jvmMain {
-            dependencies {
-                implementation(project(":kotty-core"))
-            }
-        }
-        linuxX64Main {
-            dependencies {
-                implementation(project(":kotty-core"))
-            }
-        }
+dependencyResolutionManagement {
+    @Suppress("UnstableApiUsage")
+    repositories {
+        mavenCentral()
     }
+}
+
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version ("0.8.0")
+    id("dev.panuszewski.typesafe-conventions") version "0.4.0"
 }

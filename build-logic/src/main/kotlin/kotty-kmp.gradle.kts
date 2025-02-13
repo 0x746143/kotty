@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package buildsrc.convention
-
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
@@ -25,9 +23,15 @@ plugins {
 extensions.configure(KotlinMultiplatformExtension::class.java) {
     linuxX64()
     jvm()
-    jvmToolchain(21)
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
+    }
 
     sourceSets {
+        jvmMain {
+            dependencies {
+            }
+        }
         jvmTest {
             dependencies {
                 implementation(kotlin("test"))

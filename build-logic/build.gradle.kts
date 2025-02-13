@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 plugins {
-    id("kotty-kmp")
+    `kotlin-dsl`
+}
+
+repositories {
+    mavenCentral()
 }
 
 kotlin {
-    sourceSets {
-        jvmMain {
-            dependencies {
-                implementation(project(":kotty-core"))
-            }
-        }
-        linuxX64Main {
-            dependencies {
-                implementation(project(":kotty-core"))
-            }
-        }
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
     }
+}
+
+dependencies {
+    implementation(libs.kotlinGradlePlugin)
 }
