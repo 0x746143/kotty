@@ -22,9 +22,7 @@ repositories {
 }
 
 kotlin {
-    jvmToolchain {
-        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
-    }
+    jvmToolchain(libs.versions.jdk.get().toInt())
 }
 
 dependencies {

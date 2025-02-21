@@ -14,18 +14,15 @@
  * limitations under the License.
  */
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
     kotlin("multiplatform")
 }
 
-extensions.configure(KotlinMultiplatformExtension::class.java) {
+kotlin {
     linuxX64()
     jvm()
-    jvmToolchain {
-        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
-    }
+    jvmToolchain(libs.versions.jdk.get().toInt())
 
     sourceSets {
         jvmMain {
@@ -51,5 +48,3 @@ extensions.configure(KotlinMultiplatformExtension::class.java) {
         }
     }
 }
-
-
