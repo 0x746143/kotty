@@ -5,6 +5,7 @@ kotlinxDatetime = "0.6.2"
 kotlinxSerializationJSON = "1.8.0"
 kotlinxCoroutines = "1.10.1"
 kotlinxAtomicfu = "0.27.0"
+kotlinxKover = "0.9.1"
 nettyVersion = "4.2.0.RC2"
 
 [libraries]
@@ -20,4 +21,5 @@ netty = { module = "io.netty:netty-all", version.ref = "nettyVersion" }
 kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines", "kotlinxAtomicfu"]
 
 [plugins]
-kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinxKover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinxKover" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
