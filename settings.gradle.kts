@@ -37,4 +37,3 @@ rootProject.name = "kotty"
 
 include("kotty-core")
 include("kotty-example")
-include("kotty-epoll")
