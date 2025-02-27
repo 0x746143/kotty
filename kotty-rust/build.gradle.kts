@@ -13,28 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-dependencyResolutionManagement {
-    @Suppress("UnstableApiUsage")
-    repositories {
-        mavenCentral()
+import org.gradle.kotlin.dsl.support.serviceOf
+
+tasks.register("compileRust") {
+    group = "build"
+
+    val projectDir = layout.projectDirectory
+    inputs.files(fileTree(projectDir) { include("**/*.rs", "**/*.toml") })
+    outputs.files(fileTree(projectDir) { include("target/**/*.so", "target/**/*.a") })
+
+    val execOps = project.serviceOf<ExecOperations>()
+    doLast {
+        execOps.exec {
+            commandLine("cargo", "build")
+        }
     }
 }
-
-pluginManagement {
-    includeBuild("build-logic")
-
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
-}
-
-rootProject.name = "kotty"
-
-include("kotty-core")
-include("kotty-example")
-include("kotty-rust")
