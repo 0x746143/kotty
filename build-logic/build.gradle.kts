@@ -22,9 +22,9 @@ repositories {
 }
 
 kotlin {
-    jvmToolchain(libs.versions.jdk.get().toInt())
+    jvmToolchain(buildlibs.versions.jdk.get().toInt())
 }
 
 dependencies {
-    implementation(libs.kotlinGradlePlugin)
+    implementation(buildlibs.kotlinGradlePlugin)
 }

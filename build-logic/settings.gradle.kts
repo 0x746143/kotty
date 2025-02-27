@@ -25,6 +25,13 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
     }
+    versionCatalogs {
+        // This is a workaround due to an issue with the integration
+        // of typesafe-conventions plugin and IntelliJ IDEA
+        create("buildlibs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
+    }
 }
 
 plugins {
