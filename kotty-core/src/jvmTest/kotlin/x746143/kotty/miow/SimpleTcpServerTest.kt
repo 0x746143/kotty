@@ -13,24 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package x746143.kotty
+package x746143.kotty.miow
 
-import x746143.kotty.miow.SimpleTcpServer
+import kotlin.test.Test
 
-actual fun createKotty(block: Kotty.() -> Unit): Kotty {
-    val kotty = KottyJvm()
-    block(kotty)
-    return kotty
-}
-
-private class KottyJvm(override var port: Int = 0) : Kotty {
-    override fun start() {
-        println("Kotty started. Port = $port")
-        println("PID: ${ProcessHandle.current().pid()}")
+class SimpleTcpServerTest {
+    @Test
+    fun startServer() {
         SimpleTcpServer().startServer()
-    }
-
-    override fun shutdown() {
-        println("Kotty stopped")
     }
 }

@@ -38,7 +38,7 @@ kotlin {
 
     tasks.withType<Test>().configureEach {
         useJUnitPlatform()
-
+        jvmArgs("--enable-native-access=ALL-UNNAMED")
         testLogging {
             events(
                 TestLogEvent.FAILED,
@@ -46,5 +46,9 @@ kotlin {
                 TestLogEvent.SKIPPED
             )
         }
+    }
+
+    tasks.withType<JavaExec>().configureEach {
+        jvmArgs("--enable-native-access=ALL-UNNAMED")
     }
 }
