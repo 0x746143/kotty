@@ -27,7 +27,7 @@ private class KottyJvm(override var port: Int = 0) : Kotty {
         println("PID: ${ProcessHandle.current().pid()}")
     }
 
-    override fun stop() {
+    override fun shutdown() {
         println("Kotty stopped")
     }
 }

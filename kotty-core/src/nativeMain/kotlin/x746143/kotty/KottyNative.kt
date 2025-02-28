@@ -29,7 +29,7 @@ private class KottyNative(override var port: Int = 0) : Kotty {
         println("PID: ${getpid()}")
     }
 
-    override fun stop() {
+    override fun shutdown() {
         println("Kotty stopped")
     }
 }

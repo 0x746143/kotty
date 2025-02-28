@@ -21,5 +21,5 @@ fun main() {
     val kotty = startKotty {
         port = 8080
     }
-    kotty.stop()
+    kotty.shutdown()
 }

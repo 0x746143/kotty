@@ -18,7 +18,7 @@ package x746143.kotty
 interface Kotty {
     var port: Int
     fun start()
-    fun stop()
+    fun shutdown()
 }
 
 expect fun createKotty(block: Kotty.() -> Unit): Kotty
