@@ -9,3 +9,6 @@ name = "kottymiow"
 
 [build-dependencies]
 cbindgen = "0.28"
+
+[dependencies]
+mio = { version = "1", features = ["os-poll", "net"] }
