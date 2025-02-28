@@ -13,23 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package x746143.kotty
+package x746143.kotty.miow
 
-import platform.posix.getpid
+import kotlinx.cinterop.ExperimentalForeignApi
+import x746143.kotty.miow.native.kotty_miow_init_server
 
-actual fun createKotty(block: Kotty.() -> Unit): Kotty {
-    val kotty = KottyNative()
-    block(kotty)
-    return kotty
-}
-
-private class KottyNative(override var port: Int = 0) : Kotty {
-    override fun start() {
-        println("Kotty started. Port = $port")
-        println("PID: ${getpid()}")
-    }
-
-    override fun shutdown() {
-        println("Kotty stopped")
+class SimpleTcpServer {
+    @OptIn(ExperimentalForeignApi::class)
+    fun startServer() {
+        val result = kotty_miow_init_server()
+        println(result)
     }
 }

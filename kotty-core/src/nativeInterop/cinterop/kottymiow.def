@@ -1,0 +1,5 @@
+package = x746143.kotty.miow.native
+headers = kottymiow.h
+compilerOpts = -I../kotty-rust/kotty-miow/include
+staticLibraries = libkottymiow.a
+libraryPaths = ../kotty-rust/target/debug ../kotty-rust/target/release

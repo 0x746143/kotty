@@ -15,7 +15,7 @@
  */
 import org.gradle.kotlin.dsl.support.serviceOf
 
-tasks.register("compileRust") {
+tasks.register("build") {
     group = "build"
 
     val projectDir = layout.projectDirectory

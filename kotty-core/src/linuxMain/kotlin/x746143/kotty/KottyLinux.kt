@@ -13,16 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("kotty-kmp")
+package x746143.kotty
+
+import platform.posix.getpid
+import x746143.kotty.miow.SimpleTcpServer
+
+actual fun createKotty(block: Kotty.() -> Unit): Kotty {
+    val kotty = KottyNative()
+    block(kotty)
+    return kotty
 }
 
-kotlin {
-    linuxX64 {
-        compilations["main"].cinterops {
-            create("kottymiow") {
-                tasks[interopProcessingTaskName].dependsOn(":kotty-rust:build")
-            }
-        }
+private class KottyNative(override var port: Int = 0) : Kotty {
+    override fun start() {
+        println("Kotty started. Port = $port")
+        println("PID: ${getpid()}")
+        SimpleTcpServer().startServer()
+    }
+
+    override fun shutdown() {
+        println("Kotty stopped")
     }
 }

@@ -13,16 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id("kotty-kmp")
-}
+package x746143.kotty.miow
 
-kotlin {
-    linuxX64 {
-        compilations["main"].cinterops {
-            create("kottymiow") {
-                tasks[interopProcessingTaskName].dependsOn(":kotty-rust:build")
-            }
-        }
+import kotlin.test.Test
+
+class SimpleTcpServerTest {
+    @Test
+    fun startServer() {
+        SimpleTcpServer().startServer()
     }
 }
