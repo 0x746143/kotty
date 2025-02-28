@@ -29,3 +29,14 @@ tasks.register("build") {
         }
     }
 }
+
+tasks.register("clean") {
+    group = "build"
+
+    val execOps = project.serviceOf<ExecOperations>()
+    doLast {
+        execOps.exec {
+            commandLine("cargo", "clean")
+        }
+    }
+}
