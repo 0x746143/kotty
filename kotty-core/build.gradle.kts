@@ -18,11 +18,15 @@ plugins {
 }
 
 kotlin {
+    val rustBuildTaskName = ":kotty-rust:build"
     linuxX64 {
         compilations["main"].cinterops {
             create("kottymiow") {
-                tasks[interopProcessingTaskName].dependsOn(":kotty-rust:build")
+                tasks[interopProcessingTaskName].dependsOn(rustBuildTaskName)
             }
         }
+    }
+    jvm {
+        tasks["jvmJar"].dependsOn(rustBuildTaskName)
     }
 }
